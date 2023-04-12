@@ -7,15 +7,26 @@ class stack:
         self.__size=size
         self.__top=-1
         self.__arr=[0 for i in range(self.__size)]
+    def isEmpty(self):
+        if self.__top==-1:
+            return True
+        return False
+    def isFull(self):
+        if self.__top==self.__size-1:
+            return True
+        return False
     def getSize(self):
         return self.__size
     def display(self):
-        idx=0
-        while idx<=self.__top:
-            print(self.__arr[idx])
+        if self.__top==-1:
+            return
+        idx=self.__top
+        while idx>=0:
+            print(self.__arr[idx],end=' >')
             idx+=1
+        print(None)
     def push(self,item):
-        if self.__top==self.__size:
+        if self.__top==self.__size-1:
             raise ce.OverFlow('stack is full error')
         self.__top+=1
         self.__arr[self.__top]=item
@@ -43,9 +54,24 @@ class Lstack:
         else:
             self.__top.next=Node(item)
             self.__top=self.__top.next
-    # def diplay(self):
-    #     if Top==None:
-    #         retu
+    def pop(self):
+        if self.start==None:
+            raise ce.UnderFlow("can't delete from stack is empty")
+        temp=self.start
+        if self.start.next=None:
+            self.start=None
+            item=temp.data
+            del temp
+            return item
+    def diplay(self):
+        if self.__top==None:
+            return
+        temp=self.start
+        while temp!=None:
+            print(temp.data,end=' >')
+            temp=temp.next
+        print(None)
+            
 def main():
     st=stack(-10)
     st.peek()
