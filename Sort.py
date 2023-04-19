@@ -1,8 +1,9 @@
 class Sort:
     def selectionSort(self,data,decending=False):
-        #this function take list 'data' optional parameter decending set to false
+        #this function take list as'data' optional parameter decending set to false
         # this function sort the list accending order
         # if decending is True sort the list denending oreder
+        # this funcion take O(n*n) time
         size=len(data)
         self.data=data
         idx1=0
@@ -28,6 +29,11 @@ class Sort:
                     idx2+=1
                 idx1+=1
     def bubleSort(self,data,decending=False):
+        #this function takes list as 'data' and has a optional parameter set to False
+        # this function sort the list 'data' in accending order
+        #if decending is 'True' then sort the list ''data' in decending order
+        #if this function take O(n*n)
+        #if list sorted then it stop it's execution
         idx=0
         size=len(data)
         if decending:
@@ -59,22 +65,38 @@ class Sort:
                     break
                 idx+=1
     def insertionSort(self,data,decending=False):
-        size=len(data)
-        idx=1
-        while idx<size:
-            idx2=idx-1
-            item=data[idx]
-            while idx2!=-1 and data[idx2]>item:
-                data[idx2+1]=data[idx2]
-                idx2-=1
-            data[idx2+1]=item
-            idx+=1
+        #this function takes list as 'data' and has a optional parameter set to False
+        # this function sort the list 'data' in accending order
+        #if decending is 'True' then sort the list ''data' in decending order
+        #if this function take O(n*n)
+        if decending:
+            size=len(data)
+            idx=1
+            while idx<size:
+                idx2=idx-1
+                item=data[idx]
+                while idx2!=-1 and data[idx2]<item:
+                    data[idx2+1]=data[idx2]
+                    idx2-=1
+                data[idx2+1]=item
+                idx+=1
+        else:
+            size=len(data)
+            idx=1
+            while idx<size:
+                idx2=idx-1
+                item=data[idx]
+                while idx2!=-1 and data[idx2]>item:
+                    data[idx2+1]=data[idx2]
+                    idx2-=1
+                data[idx2+1]=item
+                idx+=1
     def quickSort(self,data,low,high):
         if low<=high:
-            pivot=self.quick(data,low,high)
+            pivot=self.__quick(data,low,high)
             self.quickSort(data,low,pivot-1)
             self.quickSort(data,pivot+1,high)
-    def quick(self,data,low,high):
+    def __quick(self,data,low,high):
         piv=low
         rt=high
         lt=low+1
@@ -125,6 +147,7 @@ if "__main__"==__name__:
     l=[1,4,95,1,3,5,32,-1,92]
     s=Sort()
     # print(s.merge([3, 5],[32, -1]))
-    print("sfda",s.mergeSort(l))
-    # print(l)
+    # print("sfda",s.mergeSort(l))
+    s.insertionSort(l,decending=True)
+    print(l)
     del l

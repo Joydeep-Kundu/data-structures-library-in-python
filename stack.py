@@ -58,7 +58,7 @@ class Lstack:
         if self.start==None:
             raise ce.UnderFlow("can't delete from stack is empty")
         temp=self.start
-        if self.start.next=None:
+        if self.start.next==None:
             self.start=None
             item=temp.data
             del temp
