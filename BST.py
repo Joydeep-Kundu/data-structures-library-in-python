@@ -52,7 +52,7 @@ class BST:
             if nd==None:
                 return
             g(nd.left)
-            print(nd.data,end='>')
+            print(nd.data,end=' > ')
             g(nd.right)
         g(self.root)
         print()
@@ -62,47 +62,69 @@ class BST:
                 return
             g(nd.left)
             g(nd.right)
-            print(nd.data,end='>')
+            print(nd.data,end=' > ')
         g(self.root)
         print()
     def preoreder(self):
         def g(nd):
             if nd==None:
                 return
-            print(nd.data,end='>')
+            print(nd.data,end=' > ')
             g(nd.left)
             g(nd.right)
         g(self.root)
         print()
+    def hight(self):
+        def d(t):
+            if t==None:
+                return 0
+            return max(d(t.left),d(t.right))+1
+        print(d(self.root))
+
+
     def maxHeight(self):
         op=[0]
         n=0
         def d(nd,o,n=0):
             if nd==None:
-                if n<o[0]:
+                if n>o[0]:
                     o[0]=n
                 return
             d(nd.left,o,n+1)
             d(nd.right,o,n+1)
         d(self.root,op,n)
-        print(op)
+        print(op[0])
     def search(self,item):
-        def se(nd):
+        def se(nd,par=None):
             if nd==None:
                 print("item not found")
-                return
+                return (nd,par)
             if nd.data==item:
                 print('item found')
-                return
-            if nd.data<item:
-                return se(nd.left)
-            return se(nd.right)
-        se(self.root)
+                return (nd,par)
+            if nd.data>item:
+                return se(nd.left,nd)
+            return se(nd.right,nd)
+        return se(self.root)
+    def deletion(self,item):
+        a,b=self.search(item)
+        if a==None:
+            print('not found')
+            return
+        if a.left==None or a.right==None:
+            print('no child')
+        else:
+            print('both child')
+        
+        
                 
 o=BST()
 o.createBST([120,50,150,60,30,170,130])
+o.insert_a_node(10)
 o.preoreder()
 o.postorder()
 o.inorder()
 o.maxHeight()
-o.search(120)
+print(o.search(120))
+o.hight()
+o.deletion(30)
