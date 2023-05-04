@@ -33,13 +33,44 @@ class queue:
             idx+=1
     def peek(self):
         return self.__qu[self.rear]
-if __name__=="__main__":
-    q=queue(2)
-    q.enqueue(1)
-    q.enqueue(2)
-    print(q.peek())
-    q.display()
-    q.dequeue()
-    q.dequeue()
-    q.dequeue()
+
+class Node:
+    def __init__(self,val) -> None:
+        self.data=val
+        self.next=None
+class lqueue:
+    def __init__(self):
+        self.front=None
+        self.rear=None
+    def enqueue(self,item):
+        if self.front==None and self.rear==None:
+            self.front=self.rear=Node(item)
+        else:
+            self.rear.next=Node(item)
+            self.rear=self.rear.next
+    def dequeue(self):
+        if self.front==None:
+            print('queue is empty')
+            return
+        if self.front==self.rear:
+            temp=self.front
+            item=temp.data
+            self.front=self.rear=None
+            del temp
+            return item
+        temp=self.front
+        item=temp.data
+        self.front=self.front.next
+        del temp
+        return item
+    def display(self):
+        if self.front==None:
+            print('queue is empty')
+            return
+        temp=self.front
+        while temp!=self.rear:
+            print(temp.data,end=' >')
+            temp=temp.next
+        print(temp.data)
+
         

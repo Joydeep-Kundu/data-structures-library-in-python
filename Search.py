@@ -46,20 +46,7 @@ class create_list:
             else:
                 high=mid-1
         return -1
-    def isDecending(self):
-        idx=0
-        while idx<self.size-1:
-            if self.data[idx]<self.data[idx+1]:
-                return False
-            idx+=1
-        return True
-    def isAcending(self):
-        idx=0
-        while idx<self.size-1:
-            if self.data[idx]>self.data[idx+1]:
-                return False
-            idx+=1
-        return True
+
 if __name__=="__main__":
     ob=create_list([1,12,14,15,3])
     print(ob.binarySearch(15))

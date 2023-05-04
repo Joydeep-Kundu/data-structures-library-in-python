@@ -106,25 +106,50 @@ class BST:
                 return se(nd.left,nd)
             return se(nd.right,nd)
         return se(self.root)
+    def single(self,a,b):
+            if a.data<b.data:
+                if a.left!=None:
+                    b.left=a.left
+                elif a.right!=None:
+                    b.left=a.right
+                else:
+                    b.left=None
+            else:
+                if a.left!=None:
+                    b.right=a.left
+                elif a.right!=None:
+                    b.right=a.right
+                else:
+                    b.right=None
     def deletion(self,item):
         a,b=self.search(item)
         if a==None:
             print('not found')
             return
         if a.left==None or a.right==None:
-            print('no child')
+            self.single(a,b)
         else:
-            print('both child')
+            tempnd=a.right
+            par=a
+            b=None
+            while tempnd.left!=None:
+                par=tempnd
+                tempnd=tempnd.left
+            suc=tempnd.data
+            print(tempnd.data,par.data)
+            self.single(tempnd,par)
+            a.data=suc
         
         
                 
 o=BST()
-o.createBST([120,50,150,60,30,170,130])
-o.insert_a_node(10)
-o.preoreder()
-o.postorder()
+o.createBST([12,3,10,21,1,54,90,50])
+# o.insert_a_node(180)
+# o.preoreder()
+# o.postorder()
 o.inorder()
 o.maxHeight()
 print(o.search(120))
 o.hight()
-o.deletion(30)
+o.deletion(50)
+o.inorder()

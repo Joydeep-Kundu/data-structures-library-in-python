@@ -143,21 +143,21 @@ class Clink_list:
             item=tempNode2.data
             del tempNode2
             return item
-        ipos=0
-        if tempNode2.next!=self.head:
-            if ipos==pos-1:
-                tempNode3=tempNode2
-                tempNode2=tempNode2.next
-                tempNode3.next=tempNode2.next
-                item=tempNode2.data
-                del tempNode2
-                return item
-            tempNode2=tempNode2.next
-        print(tempNode2.data)
-        tempNode3.next=self.head
-        item=tempNode2.data
-        del tempNode2
-        return item
+        # ipos=0
+        # if tempNode2.next!=self.head:
+        #     if ipos==pos-1:
+        #         tempNode3=tempNode2
+        #         tempNode2=tempNode2.next
+        #         tempNode3.next=tempNode2.next
+        #         item=tempNode2.data
+        #         del tempNode2
+        #         return item
+        #     tempNode2=tempNode2.next
+        # print(tempNode2.data)
+        # tempNode3.next=self.head
+        # item=tempNode2.data
+        # del tempNode2
+        # return item
 
 
 
