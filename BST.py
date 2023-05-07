@@ -44,7 +44,7 @@ class BST:
                 self.d(self.root,i)
     def insert_a_node(self,data):
         if self.root==None:
-            self.root==Node(data)
+            self.root=Node(data)
         else:
             self.d(self.root,data)
     def inorder(self):
@@ -126,8 +126,20 @@ class BST:
         if a==None:
             print('not found')
             return
+
         if a.left==None or a.right==None:
-            self.single(a,b)
+            if b==None:
+                if a.left==None:
+                    self.root=a.right
+                    return
+                if a.right==None:
+                    self.root=a.left
+                    return
+                if a.right==None and a.left==None:
+                    self.root==None
+                    return
+            else:
+                self.single(a,b)
         else:
             tempnd=a.right
             par=a
@@ -143,7 +155,7 @@ class BST:
         
                 
 o=BST()
-o.createBST([12,3,10,21,1,54,90,50])
+o.createBST([100,12,120,11,90,110,130])
 # o.insert_a_node(180)
 # o.preoreder()
 # o.postorder()
@@ -151,5 +163,6 @@ o.inorder()
 o.maxHeight()
 print(o.search(120))
 o.hight()
-o.deletion(50)
+o.deletion(100)
 o.inorder()
+o.preoreder()
