@@ -94,7 +94,9 @@ class Sort:
     def quickSort(self,data,low,high):
         if low<=high:
             pivot=self.__quick(data,low,high)
+            print(data)
             self.quickSort(data,low,pivot-1)
+            print(data)
             self.quickSort(data,pivot+1,high)
     def __quick(self,data,low,high):
         piv=low
@@ -144,10 +146,11 @@ class Sort:
         b=self.mergeSort(data[mid:])
         return self.merge(a,b)
 if "__main__"==__name__:
-    l=[1,4,95,1,3,5,32,-1,92]
+    l=[12,11,1,9,20,17,21]
+    print(l)
     s=Sort()
     # print(s.merge([3, 5],[32, -1]))
     # print("sfda",s.mergeSort(l))
-    s.insertionSort(l,decending=True)
+    s.quickSort(l,0,len(l)-1)
     print(l)
     del l
